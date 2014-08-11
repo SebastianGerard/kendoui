@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <!--<link href="Content/kendo.common.min.css" rel="stylesheet" />
+    <link href="Content/kendo.metro.min1.css" rel="stylesheet" />
+    <script src="Scripts/jquery.min.js"></script>
+    <script src="Scripts/kendo.all.min.js"></script>-->
+
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script src="Scripts/jquery.min.js"></script>
+    <script src="Content/bootstrap.min.css"></script>
+    <script src="Scripts/kendo.all.min.js"></script>
+
+    <link rel="stylesheet" href="Content/kendo.common.min.css">
+    <link rel="stylesheet" href="Content/kendo.blueopal.min.css">
+    <link rel="stylesheet" href="Content/kendo.blueopal.mobile.min.css">
+   
+   
+</head>
+<body>
+    <button type="button" id="addBtn" >add</button>
+    <button type="button" id="removeBtn">remove</button>
+    <button type="button" id="removeSyncBtn">removeSync</button>
+    <button type="button" id="syncBtn" >sync</button>
+    <input type="text" id="name"/>
+        <script>
+            function dataSource_sync(e) {
+                var data = dataSource.data();
+                alert(data.length);
+            }
+            var lastevent;
+            var dataSource = new kendo.data.DataSource({
+                batch: true,
+                transport: {
+                    create: {
+                        url: "http://demos.telerik.com/kendo-ui/service/products/create",
+                        dataType: "jsonp" //"jsonp" is required for cross-domain requests; use "json" for same-domain requests
+                    },
+                    parameterMap: function (data) {
+                        return { models: kendo.stringify(data.models) };
+                    }
+                },
+                schema: {
+                    model: { id: "ProductID" }
+                },
+                change: function(e)
+                {
+                    lastevent = e.items[0];
+                }
+            });
+
+            $("#addBtn").kendoButton({
+
+                click: function (e) {
+                    var name = $('#name').val();
+                    dataSource.add({ ProductName: name });
+                }
+            });
+            $("#removeBtn").kendoButton({
+
+                click: function (e) {
+                    alert("Deleted>"+lastevent.ProductName);
+                    dataSource.remove(lastevent);
+                }
+            });
+            $("#removeSyncBtn").kendoButton({
+
+                click: function (e) {
+                    
+                    var raw = dataSource.data();
+                    var item = raw[0];
+                    alert("Deleted>" + item.ProductName);
+                    dataSource.remove(item);
+                }
+            });
+            $("#syncBtn").kendoButton({
+
+                click: function (e) {
+                    dataSource.sync();
+                }
+            });
+            dataSource.bind("sync", dataSource_sync);
+            
+        </script>
+</body>
+
+</html>
