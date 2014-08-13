@@ -1,0 +1,444 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <!--<link href="Content/kendo.common.min.css" rel="stylesheet" />
+    <link href="Content/kendo.metro.min1.css" rel="stylesheet" />
+    <script src="Scripts/jquery.min.js"></script>
+    <script src="Scripts/kendo.all.min.js"></script>-->
+
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script src="Scripts/jquery.min.js"></script>
+    <script src="Content/bootstrap.min.css"></script>
+    <script src="Scripts/kendo.all.min.js"></script>
+
+    <link rel="stylesheet" href="Content/kendo.common.min.css">
+    <link rel="stylesheet" href="Content/kendo.blueopal.min.css">
+    <link rel="stylesheet" href="Content/kendo.blueopal.mobile.min.css">
+   
+   
+</head>
+<body>
+    
+   
+    <div id="example">
+        <div id="top-panel">
+            <div id="scheduler"></div>
+        </div>
+        <div id="custom">
+            <div id="horizontal">
+                <div>
+                    <table style="width: 98%; margin-left:0;">
+                        <tr>
+                            <td>
+                                <div id="tabstrip">
+                                    <ul style="margin-top: 0%">
+                                        <li id="tab1" class="k-state-active">
+                                            Information
+                                        </li>
+                                        <li>
+                                            Notes
+                                        </li>
+                                    </ul>
+                                    <div>
+                                        <table style="width: 100%">
+                                            <tbody>
+                                                <tr>
+                                                    <td></td>
+                                                    <td colspan="3">
+                                                        <input placeholder="Exams" id="examList" style="width: 100%; font-size: 8pt;" name="exam" />
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td colspan="3">
+                                                        <div><span class="k-invalid-msg" data-for="exam"></span></div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="right"><div id="patient"></div></td>
+                                                    <td>
+                                                        <input type="text" id="patientFamilyName" name="Family Name" class="k-textbox" placeholder="Family Name" style="width: 100%; font-size: 8pt;" />
+                                                        <input type="hidden" id="userId" value="<%=this.UserNameDecoded%>" />
+                                                        <input type="hidden" id="appointmentId" />
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" id="patientGivenName" name="GivenName" class="k-textbox" placeholder="Given Name" style="width: 200px; font-size: 8pt;" />
+
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" id="patientMaidenName" name="MaidenName" class="k-textbox" placeholder="Maiden Name" style="width: 210px; font-size: 8pt;" />
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td colspan="3">
+                                                        <div><span class="k-invalid-msg" data-for="Family Name"></span></div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="right"><div id="physician"></div></td>
+                                                    <td>
+                                                        <input placeholder="Family Name" name="Physician Family Name" id="reqPhyFamilyName" type="text" class="k-textbox" style="width: 200px; font-size: 8pt;" />
+
+                                                    </td>
+                                                    <td>
+                                                        <input placeholder="Given Name" id="reqPhyGivenName" type="text" class="k-textbox" style="width: 200px; font-size: 8pt;" />
+                                                    </td>
+                                                    <td>
+                                                        <input id="radiologistColor" type="checkbox" onclick="radiologists_paint_colors()" /> Radiologist colors
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td colspan="3">
+                                                        <div><span class="k-invalid-msg" data-for="Physician Family Name"></span></div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td><div id="birthdate"></div></td>
+                                                    <td>
+                                                        <input id="birthDate" value="" style="width: 120px; font-size: 8pt;" />
+
+                                                        Sex:
+                                                        <input id="sex" style="width: 50px; font-size: 8pt;" />
+
+                                                    </td>
+                                                    <td colspan="2">
+                                                        <input type="text" id="phone" name="phone" class="k-textbox" placeholder="Phone" style="width: 200px; font-size: 8pt;" />
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td>
+                                                        <input placeholder="AVS" type="text" id="avs" name="avs" class="k-textbox" style="width: 200px; font-size: 8pt;" />
+                                                    </td>
+                                                    <td colspan="2" rowspan="2">
+                                                        <textarea id="address" class="k-textbox" style="width: 420px; height: 80px; font-size: 8pt;" placeholder="Address"></textarea>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td>
+                                                        <input placeholder="Radiologist" type="text" id="radiologist" name="radiologistList" style="width: 200px; font-size: 8pt;" />
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div id="type_lbl">
+
+                                                        </div>
+                                                    </td>
+                                                    <td align="right">
+                                                        <input id="type" style="width: 50px; font-size: 8pt;" />
+                                                    </td>
+                                                    <td colspan="2">
+                                                        <input type="text" id="email" name="email" placeholder="Email" class="k-textbox" style="width: 420px; font-size: 8pt;" />
+                                                    </td>
+
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div>
+                                        <div>
+                                            <textarea class="k-textbox" id="notes" placeholder="Notes" style="height: 80px; width: 700px; margin-bottom: 5px; font-size: 8pt;"></textarea>
+                                        </div>
+                                        <div>
+                                            <textarea class="k-textbox" id="clinicalNotes" placeholder="Clinical Notes" style="height: 80px; width: 700px; margin-bottom: 5px; font-size: 8pt;"></textarea>
+                                        </div>
+                                        <div>
+                                            <textarea class="k-textbox" id="desiredNotes" placeholder="Desired Notes" style="height: 80px; width: 700px; margin-bottom: 5px; font-size: 8pt;"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div id="right-pane">
+                    <div id="grid"></div>
+                </div>
+            </div>
+        </div >
+        <button id="btn">hide/show</button>
+    </div>
+    <script>
+            var btn = document.getElementById("btn");
+            var hidden = true;
+            var customPanelHeight = 307;
+            var bussinessHoursHeight = 41;
+            var buttonHeight = 30;
+            var minimunHeight = 640;
+            var minimunWidth = 360;
+            function schedulerHeightWForm()
+            {
+                var windowHeight = $(window).height();
+                if (windowHeight >= minimunHeight)
+                    return ($(window).height() - customPanelHeight );
+                else
+                    return $(window).height() ;
+            }
+            function fixAgenda()
+            {
+                var div = document.getElementById("custom");
+                if (!hidden) {
+                    var scheduler = $("#scheduler").data("kendoScheduler");
+                    var schedulerH = schedulerHeightWForm();
+                    scheduler.element.height(schedulerH);
+                    div.style.display = "block";
+
+                    scheduler.view("Week");
+                    scheduler.view("Day");
+                    var s = $("#scheduler");
+                    s.height(schedulerH - bussinessHoursHeight);
+                }
+
+                else {
+                    var scheduler = $("#scheduler").data("kendoScheduler");
+                    scheduler.element.height($(window).height() - buttonHeight);
+                    div.style.display = "none";
+                    scheduler.view("Week");
+                    scheduler.view("Day");
+                }
+
+            }
+            function fixSplitter() {
+                if (!hidden)
+                {
+                    var windowWidth = $(window).width();
+                    if (windowWidth > minimunWidth)
+                    {
+                        $("#horizontal").getKendoSplitter().toggle("#right-pane", true);
+                        $("#horizontal").getKendoSplitter().size("#right-pane", (windowWidth / 3) + "px");
+                    }
+                        
+                    else
+                        $("#horizontal").getKendoSplitter().toggle("#right-pane",false);
+                    
+                }
+            }
+            window.onresize = function () {
+                fixAgenda();
+                fixSplitter();
+            }
+            btn.onclick = function () {
+                hidden = !hidden;
+                fixAgenda();
+                fixSplitter();
+            }
+
+            $(function () {
+                
+                $("#tabstrip").kendoTabStrip({
+                    animation: false,
+                    collapsible: false
+                });
+                $("#horizontal").kendoSplitter({
+                    panes: [
+                        { collapsible: false, resizable: true, },
+                        { collapsible: true, resizable: true, size: 320 },
+
+                    ]
+                });
+                $("#grid").kendoGrid({
+                    selectable: "multiple",
+                    height: 250,
+                    filterable: false,
+                    sortable: false,
+                    pageable: false,
+                    columns: [
+                        { field: "start", title: "From",  width: 50 },
+                        { field: "end", title: "To",  width: 50 },
+                        { field: "roomId", title: "Room",  width: 100 },
+                        { field: "title", title: "Exam",  width: 100}
+                    ],
+                    mobile: true
+                });
+                $("#scheduler").kendoScheduler({
+                    date: new Date("2013/6/13"),
+                    startTime: new Date("2013/6/13 07:00 AM"),
+                    height: $(window).height() - buttonHeight,
+                    selectable: true,
+                    views: [
+                        "day",
+                        { type: "workWeek", selected: true },
+                        "week",
+                        "month",
+                        "agenda"
+                    ],
+                    timezone: "Etc/UTC",
+                
+                    dataSource: {
+                        batch: true,
+                        transport: {
+                            read: {
+                                url: "http://demos.telerik.com/kendo-ui/service/tasks",
+                                dataType: "jsonp"
+                            },
+                            update: {
+                                url: "http://demos.telerik.com/kendo-ui/service/tasks/update",
+                                dataType: "jsonp"
+                            },
+                            create: {
+                                url: "http://demos.telerik.com/kendo-ui/service/tasks/create",
+                                dataType: "jsonp"
+                            },
+                            destroy: {
+                                url: "http://demos.telerik.com/kendo-ui/service/tasks/destroy",
+                                dataType: "jsonp"
+                            },
+                            parameterMap: function (options, operation) {
+                                if (operation !== "read" && options.models) {
+                                    return { models: kendo.stringify(options.models) };
+                                }
+                            }
+                        },
+                        schema: {
+                            model: {
+                                id: "taskId",
+                                fields: {
+                                    taskId: { from: "TaskID", type: "number" },
+                                    title: { from: "Title", defaultValue: "No title", validation: { required: true } },
+                                    start: { type: "date", from: "Start" },
+                                    end: { type: "date", from: "End" },
+                                    startTimezone: { from: "StartTimezone" },
+                                    endTimezone: { from: "EndTimezone" },
+                                    description: { from: "Description" },
+                                    recurrenceId: { from: "RecurrenceID" },
+                                    recurrenceRule: { from: "RecurrenceRule" },
+                                    recurrenceException: { from: "RecurrenceException" },
+                                    ownerId: { from: "OwnerID", defaultValue: 1 },
+                                    isAllDay: { type: "boolean", from: "IsAllDay" }
+                                }
+                            }
+                        },
+                        filter: {
+                            logic: "or",
+                            filters: [
+                                { field: "ownerId", operator: "eq", value: 1 },
+                                { field: "ownerId", operator: "eq", value: 2 }
+                            ]
+                        }
+                    },
+                    resources: [
+                        {
+                            field: "ownerId",
+                            title: "Owner",
+                            dataSource: [
+                                { text: "Alex", value: 1, color: "#f8a398" },
+                                { text: "Bob", value: 2, color: "#51a0ed" },
+                                { text: "Charlie", value: 3, color: "#56ca85" }
+                            ]
+                        }
+                    ]
+                });
+                //Fields of kendo scheduler
+                $("#type").kendoDropDownList({
+                    dataTextField: "type",
+                    dataValueField: "typeId",
+                    dataSource: [
+                        { type: "A", typeId: 10 },
+                        { type: "H", typeId: 20 },
+                    ]
+                });
+                $("#sex").kendoDropDownList({
+                    dataTextField: "sexPrefix",
+                    dataValueField: "sexId",
+                    dataSource: [
+                        { sexPrefix: "F", sexId: "F" },
+                        { sexPrefix: "M", sexId: "M" },
+                        { sexPrefix: "Other", sexId: "O" }
+                    ],
+
+                });
+                $("#birthDate").kendoDatePicker();
+                $("#radiologist").kendoComboBox({
+                    dataTextField: "text",
+                    dataValueField: "value",
+                    dataSource: [
+                        { text: "", value: "0" },
+                        { text: "Lepori Domenico", value: "6471" },
+                        { text: "MULLER BROCHUT  Anne-Claude", value: "6487" },
+                        { text: "Picht  Carmen", value: "6495" }
+                    ],
+                })
+
+                $("#examList").kendoComboBox({
+                    dataTextField: "text",
+                    dataValueField: "value",
+                    dataSource: [
+                        { text: "", value: "0" },
+                        { text: "CT Angio-CT", value: "102031" },
+                        { text: "MR Avant-bras", value: "103034" },
+                        { text: "CR Avant-pied", value: "100511" }
+                    ],
+                    change: function (e) {
+                        var value = this.value();
+                        var text = this.text();
+                        var scheduler = $("#scheduler").data("kendoScheduler");
+                        if (lastEventId < 0) {
+                            var lastEvent = scheduler.dataSource.get(lastEventId);
+                            lastEvent.title = text;
+                            scheduler.refresh();
+                        }
+                    },
+                    filter: "contains",
+                    suggest: true,
+                    index: 0
+                });
+                var div = document.getElementById("custom");
+                div.style.display = "none";
+            });
+    </script>
+    <style scoped>
+        .k-nav-current > .k-link span + span {
+            max-width: 200px;
+            display: inline-block;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            vertical-align: top;
+        }
+
+        #vertical {
+        height: 700px;
+        }
+
+        #team-schedule {
+            background: url('../content/web/scheduler/team-schedule.png') transparent no-repeat;
+            height: 115px;
+            position: relative;
+        }
+
+        #people {
+            background: url('../content/web/scheduler/scheduler-people.png') no-repeat;
+            width: 345px;
+            height: 115px;
+            position: absolute;
+            right: 0;
+        }
+
+        #alex {
+            position: absolute;
+            left: 4px;
+            top: 81px;
+        }
+
+        #bob {
+            position: absolute;
+            left: 119px;
+            top: 81px;
+        }
+
+        #charlie {
+            position: absolute;
+            left: 234px;
+            top: 81px;
+        }
+    </style>
+
+</body>
+
+</html>
